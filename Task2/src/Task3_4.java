@@ -7,9 +7,9 @@ public class Task3_4 {
         int size = 4;
         int[] arr = new int[size];
 
-        System.out.println("Введите " + size + " элементов массива");
+        System.out.println("Введите " + arr.length + " элементов массива");
         Scanner in = new Scanner(System.in);
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < arr.length; i++)
         {
             arr[i] = in.nextInt();
         }

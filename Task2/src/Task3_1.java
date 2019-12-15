@@ -7,17 +7,17 @@ public class Task3_1 {
         int size = 5;
         int[] arr = new int[size];
 
-        System.out.println("Введите " + size + " элементов массива");
+        System.out.println("Введите " + arr.length + " элементов массива");
         Scanner in = new Scanner(System.in);
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < arr.length; i++)
         {
             arr[i] = in.nextInt();
         }
 
         // Сортировка выбором
-        for(int j = 0; j < size; j++)
+        for(int j = 0; j < arr.length; j++)
         {
-            for(int i = j; i < size; i++)
+            for(int i = j; i < arr.length; i++)
             {
                 int min = arr[j];
                 if (arr[i] < min)

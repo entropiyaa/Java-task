@@ -7,17 +7,17 @@ public class Task3_2b {
         int size = 5;
         int[] arr = new int[size];
 
-        System.out.println("Введите " + size + " элементов массива");
+        System.out.println("Введите " + arr.length + " элементов массива");
         Scanner in = new Scanner(System.in);
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < arr.length; i++)
         {
             arr[i] = in.nextInt();
         }
 
         // Шейкерная сортировка
-        for(int j = 1; j < size; j++)
+        for(int j = 1; j < arr.length; j++)
         {
-            for(int i = 0; i < size - j; i++)
+            for(int i = 0; i < arr.length - j; i++)
             {
                 if(arr[i] > arr[i+1])
                 {
@@ -26,7 +26,7 @@ public class Task3_2b {
                     arr[i+1] = change;
                 }
             }
-            for(int i = size - j - 1; i > j - 1; i--)
+            for(int i = arr.length - j - 1; i > j - 1; i--)
             {
                 if(arr[i] < arr[i-1])
                 {

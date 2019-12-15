@@ -11,17 +11,17 @@ public class Task4 {
         int size = 5;
         int[] arr = new int[size];
 
-        System.out.println("Введите " + size + " элементов массива");
+        System.out.println("Введите " + arr.length + " элементов массива");
         Scanner in = new Scanner(System.in);
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < arr.length; i++)
         {
             arr[i] = in.nextInt();
         }
 
         // Сортировка выбором
-        for(int j = 0; j < size; j++)
+        for(int j = 0; j < arr.length; j++)
         {
-            for(int i = j; i < size; i++)
+            for(int i = j; i < arr.length; i++)
             {
                 int min = arr[j];
                 if (arr[i] < min)
@@ -41,7 +41,7 @@ public class Task4 {
 
         int count = 1;
 
-        for(int i = 0; i < size - 1; i++) // считаем значения, которые не повторяются
+        for(int i = 0; i < arr.length - 1; i++) // считаем значения, которые не повторяются
         {
             if(arr[i] != arr[i + 1])
             {
@@ -52,7 +52,7 @@ public class Task4 {
         int[] arr2 = new int[count]; // создаём новый массив
         arr2[0] = arr[0];
 
-        for(int i = 1, j = 1; i < size; i++) // записываем в него неповторяющиеся значения
+        for(int i = 1, j = 1; i < arr.length; i++) // записываем в него неповторяющиеся значения
         {
             if(arr[i] != arr[i - 1])
             {

@@ -7,14 +7,14 @@ public class Task3_5 {
         int size = 5;
         int[] arr = new int[size];
 
-        System.out.println("Введите " + size + " элементов массива");
+        System.out.println("Введите " + arr.length + " элементов массива");
         Scanner in = new Scanner(System.in);
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < arr.length; i++)
         {
             arr[i] = in.nextInt();
         }
 
-        QuickSort(arr, 0, size -1);
+        QuickSort(arr, 0, arr.length - 1);
 
         for(int elem : arr)
         {
