@@ -4,14 +4,14 @@ import garage.parts.key.api.IKey;
 
 public class Key implements IKey {
 
-    private boolean key;
+    private String key;
 
-    public Key(boolean key)
+    public Key(String key)
     {
         this.key = key;
     }
 
-    @Override
+/*    @Override
     public void useKey() {
         if(key)
         {
@@ -21,10 +21,10 @@ public class Key implements IKey {
         {
             System.out.println("Ключ не подходит");
         }
-    }
+    }*/
 
     @Override
-    public boolean isKey()
+    public String getKey()
     {
         return key;
     }

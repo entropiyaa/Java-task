@@ -51,13 +51,9 @@ public class Driver implements IDriver {
     public void openCar(IKey key) {
         if(this.getCar().getLock().isLock()) {
             System.out.println("Водитель не может открыть ключом уже открытую машину!!");
-        } else if(this.getKey().isKey()) {
-            System.out.println("Водитель открыл замок ключём");
-            this.getKey().useKey();
-            this.getCar().getLock().openLock();
-            this.getInACar(); // водитель сел в машину
         } else {
-            System.out.println("Ключ не подходит");
+            this.getCar().open(key);
+            this.getInACar();
         }
     }
 
@@ -65,31 +61,10 @@ public class Driver implements IDriver {
     public void closeCar(IKey key) {
         if(!this.getCar().getLock().isLock()) {
             System.out.println("Водитель не может закрыть ключом уже закрытую машину!!");
-        } else if(this.getKey().isKey()) {
-            System.out.println("Водитель закрыл замок ключём");
-            this.getKey().useKey();
-            this.getCar().getLock().closeLock();
         } else {
-            System.out.println("Ключ не подходит");
+            this.getCar().close(key);
         }
     }
-
-/*    @Override
-    public void startCar() {
-        if(!this.getCar().getLock().isLock())
-        {
-            System.out.println("Водитель не может завести закрытую машину");
-        }
-        else if(!this.getCar().getEngine().isRunning())
-        {
-            System.out.println("Водитель завёл машину");
-            this.getCar().start();
-        }
-        else
-        {
-            System.out.println("Водитель не может завести уже заведённую машину");
-        }
-    }*/
 
     @Override
     public void startCar() {

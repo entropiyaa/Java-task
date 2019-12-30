@@ -14,16 +14,16 @@ public class Main {
     public static void main(String[] args) {
 
         Mercedes mercedes1 = new Mercedes("GL666", new MercedesEngine("A60", 2, FuelType.DIESEL),
-                                          new Wheel(60, Seasonality.AllSeason, "K7"), new Lock(false), 30);
+                                          new Wheel(60, Seasonality.AllSeason, "K7"), new Lock("123"), 30);
         System.out.println(mercedes1.getEngine().getCapacity());
 
-        Driver driver1 = new Driver(3, new Key(true), new ArrayList<LicenseCategory>(), mercedes1);
-        System.out.println(driver1.getLicenseCategory());
+        Driver driver1 = new Driver(3, new Key("1123"), new ArrayList<LicenseCategory>(), mercedes1);
+        System.out.println(driver1.getCar().getLock().isLock());
         driver1.setLicenseCategory(LicenseCategory.A);
         driver1.setLicenseCategory(LicenseCategory.B);
-        System.out.println(driver1.getLicenseCategory());
 
         driver1.openCar(driver1.getKey());
+        System.out.println(driver1.getCar().getLock().isLock());
         driver1.startCar();
         for(int i = 0; i < 10; i++)
         {

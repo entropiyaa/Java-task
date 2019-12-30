@@ -15,7 +15,7 @@ public interface ICar {
     ILock getLock();
     void drive();
     void open(IKey key);
-    void close();
+    void close(IKey key);
     void start();
     void stop();
     int getFuel();

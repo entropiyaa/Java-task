@@ -73,12 +73,26 @@ public abstract class ACars implements ICar {
 
     @Override
     public void open(IKey key) {
-        System.out.println("Открыто");
+        if(this.getLock().checkKey(key))
+        {
+            this.getLock().openLock();
+        }
+        else
+        {
+            System.out.println("Не подходит ключ");
+        }
     }
 
     @Override
-    public void close() {
-        System.out.println("Закрыто");
+    public void close(IKey key) {
+        if(this.getLock().checkKey(key))
+        {
+            this.getLock().closeLock();
+        }
+        else
+        {
+            System.out.println("Не подходит ключ");
+        }
     }
 
     @Override

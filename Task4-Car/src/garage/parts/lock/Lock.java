@@ -1,44 +1,40 @@
 package garage.parts.lock;
 
+import garage.parts.key.api.IKey;
 import garage.parts.lock.api.ILock;
 
 public class Lock implements ILock {
 
-    private boolean lock;
+    private String lock;
+    private boolean lockCondition;
 
-    public Lock(boolean lock)
+    public Lock(String lock)
     {
         this.lock = lock;
     }
 
     @Override
     public void openLock() {
-        if(!lock)
-        {
-            lock = true;
-            System.out.println("Замок открылся");
-        }
-        else
-        {
-            System.out.println("Замок и так открыт, хватит поворачивать ключ!!");
-        }
+        lockCondition = true;
     }
 
     @Override
     public void closeLock() {
-        if(lock)
-        {
-            lock = false;
-            System.out.println("Закрыли замок");
-        }
-        else
-        {
-            System.out.println("Замок и так закрыт, хватит поворачивать ключ!!");
-        }
+        lockCondition = false;
+    }
+
+    @Override
+    public String getLock() {
+        return lock;
     }
 
     @Override
     public boolean isLock() {
-        return lock;
+        return lockCondition;
+    }
+
+    @Override
+    public boolean checkKey(IKey key) {
+        return lock.equals(key.getKey());
     }
 }
