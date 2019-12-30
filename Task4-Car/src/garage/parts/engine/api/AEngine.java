@@ -1,5 +1,7 @@
 package garage.parts.engine.api;
 
+import java.util.Random;
+
 public abstract class AEngine implements IEngine {
 
     private final String id;
@@ -54,11 +56,11 @@ public abstract class AEngine implements IEngine {
         return running;
     }
 
-    @Override
-    public double running() {
+    @Override // просто генерируем количество топлива
+    public int running() {
+        Random random = new Random();
         if(running) {
-            //TODO добавить рандом
-            return 2;
+             return random.nextInt(10);
         }
         return 0;
     }

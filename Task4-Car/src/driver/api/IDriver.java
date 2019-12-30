@@ -17,5 +17,6 @@ public interface IDriver {
     void startCar();
     void stopCar();
     void driveCar();
-    void takePassenger();
+    void takePassenger(int countOfPassenger);
+    void getInACar();
 }

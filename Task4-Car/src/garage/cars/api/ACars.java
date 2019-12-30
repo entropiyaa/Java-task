@@ -12,8 +12,10 @@ public abstract class ACars implements ICar {
     private IWheel wheel;
     private String model;
     private ILock lock;
+    private int fuel;
 
-    public  ACars(String model, int numberOfSeats, LicenseCategory licenseCategory, IEngine engine, IWheel wheel, ILock lock)
+    public  ACars(String model, int numberOfSeats, LicenseCategory licenseCategory, IEngine engine, IWheel wheel,
+                  ILock lock, int fuel)
     {
         this.model = model;
         this.numberOfSeats = numberOfSeats;
@@ -21,6 +23,7 @@ public abstract class ACars implements ICar {
         this.engine = engine;
         this.wheel = wheel;
         this.lock = lock;
+        this.fuel = fuel;
     }
 
     @Override
@@ -55,9 +58,17 @@ public abstract class ACars implements ICar {
         return lock;
     }
 
-    @Override
+    @Override // используем топливо
     public void drive() {
-        System.out.println("Поехал");
+        if(this.getFuel() > 0)  // если у нас есть топливо
+        {
+            System.out.println("Машина едет");
+            this.useFuel(this.getEngine().running());
+        }
+        else
+        {
+            System.out.println("Не хватает топлива");
+        }
     }
 
     @Override
@@ -83,8 +94,18 @@ public abstract class ACars implements ICar {
     }
 
     @Override
-    public void fuel() {
-        System.out.println("Заправляем");
+    public int getFuel() {
+        return fuel;
+    }
+
+    @Override
+    public void setFuel(int newFuel) {
+        fuel += newFuel;
+    }
+
+    @Override
+    public void useFuel(int usefulFuel) {
+        fuel -= usefulFuel;
     }
 
     @Override
@@ -94,11 +115,20 @@ public abstract class ACars implements ICar {
 
     @Override
     public void driverSeat() {
-        System.out.println("Садим водителя");
+        numberOfSeats -= 1;
+        System.out.println("Водитель сел в машину");
     }
 
     @Override
-    public void passengerSeat() {
-        System.out.println("Садим пассажира");
+    public void passengerSeat(int countOfPassenger) {
+        if(numberOfSeats >= countOfPassenger)
+        {
+            numberOfSeats -= countOfPassenger;
+            System.out.println("Садим " + countOfPassenger + " пассажира(ов)");
+        }
+        else
+        {
+            System.out.println("Хватит место только на " +  numberOfSeats + " пассажира(ов)");
+        }
     }
 }

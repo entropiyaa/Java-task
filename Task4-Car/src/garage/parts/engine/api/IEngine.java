@@ -7,5 +7,5 @@ public interface IEngine {
     boolean isRunning();
     boolean start();
     boolean stop();
-    double running();
+    int running();
 }

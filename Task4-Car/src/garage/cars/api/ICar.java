@@ -18,8 +18,10 @@ public interface ICar {
     void close();
     void start();
     void stop();
-    void fuel();
+    int getFuel();
+    void setFuel(int newFuel);
+    void useFuel(int usefulFuel);
     void changeWheel();
     void driverSeat();
-    void passengerSeat();
+    void passengerSeat(int countOfPassenger);
 }

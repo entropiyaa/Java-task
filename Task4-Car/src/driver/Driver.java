@@ -55,6 +55,7 @@ public class Driver implements IDriver {
             System.out.println("Водитель открыл замок ключём");
             this.getKey().useKey();
             this.getCar().getLock().openLock();
+            this.getInACar(); // водитель сел в машину
         } else {
             System.out.println("Ключ не подходит");
         }
@@ -105,11 +106,29 @@ public class Driver implements IDriver {
 
     @Override
     public void driveCar() {
-
+        if(this.getCar().getEngine().isRunning())
+        {
+            this.getCar().drive();
+        }
+        else
+        {
+            System.out.println("Вначале заведите машину!!");
+        }
     }
 
     @Override
-    public void takePassenger() {
-
+    public void takePassenger(int countOfPassenger) {
+        this.getCar().passengerSeat(countOfPassenger);
     }
+
+    @Override
+    public void getInACar() {
+        this.getCar().driverSeat();
+    }
+
+/*    public boolean checkLicence(ArrayList<LicenseCategory> driverLicense1)
+    {
+
+    }*/
+
 }

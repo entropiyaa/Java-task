@@ -9,9 +9,9 @@ import garage.parts.wheel.api.IWheel;
 public class Mercedes extends ACars {
     private String model;
 
-    public Mercedes(String model, IEngine engine, IWheel wheel, ILock lock)
+    public Mercedes(String model, IEngine engine, IWheel wheel, ILock lock, int fuel)
     {
-        super(model,4, LicenseCategory.B, engine, wheel, lock);
+        super(model,4, LicenseCategory.B, engine, wheel, lock, fuel);
     }
 
     @Override

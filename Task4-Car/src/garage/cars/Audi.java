@@ -8,9 +8,9 @@ import garage.parts.wheel.api.IWheel;
 
 public class Audi extends ACars {
 
-    public Audi(String model, IEngine engine, IWheel wheel, ILock lock)
+    public Audi(String model, IEngine engine, IWheel wheel, ILock lock, int fuel)
     {
-        super(model,5, LicenseCategory.B, engine, wheel, lock);
+        super(model,5, LicenseCategory.B, engine, wheel, lock, fuel);
     }
 
     @Override
