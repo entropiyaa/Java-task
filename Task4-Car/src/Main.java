@@ -20,6 +20,7 @@ public class Main {
         Driver driver1 = new Driver(3, new Key(true), new ArrayList<LicenseCategory>(), mercedes1);
         System.out.println(driver1.getLicenseCategory());
         driver1.setLicenseCategory(LicenseCategory.A);
+        driver1.setLicenseCategory(LicenseCategory.B);
         System.out.println(driver1.getLicenseCategory());
 
         driver1.openCar(driver1.getKey());
@@ -29,5 +30,8 @@ public class Main {
             driver1.driveCar();
         }
         driver1.takePassenger(2);
+
+       boolean a = driver1.checkLicence(driver1.getCar().getLicenseCategory());
+       System.out.println(a);
     }
 }

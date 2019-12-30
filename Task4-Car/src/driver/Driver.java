@@ -74,11 +74,32 @@ public class Driver implements IDriver {
         }
     }
 
+/*    @Override
+    public void startCar() {
+        if(!this.getCar().getLock().isLock())
+        {
+            System.out.println("Водитель не может завести закрытую машину");
+        }
+        else if(!this.getCar().getEngine().isRunning())
+        {
+            System.out.println("Водитель завёл машину");
+            this.getCar().start();
+        }
+        else
+        {
+            System.out.println("Водитель не может завести уже заведённую машину");
+        }
+    }*/
+
     @Override
     public void startCar() {
         if(!this.getCar().getLock().isLock())
         {
             System.out.println("Водитель не может завести закрытую машину");
+        }
+        else if(!this.checkLicence(this.getCar().getLicenseCategory()))
+        {
+            System.out.println("У водителя нет прав нужной категории");
         }
         else if(!this.getCar().getEngine().isRunning())
         {
@@ -126,9 +147,16 @@ public class Driver implements IDriver {
         this.getCar().driverSeat();
     }
 
-/*    public boolean checkLicence(ArrayList<LicenseCategory> driverLicense1)
+    public boolean checkLicence(LicenseCategory licenseCategory)
     {
-
-    }*/
+       for(LicenseCategory l: this.driverLicense)
+       {
+           if(l.equals(licenseCategory))
+           {
+               return true;
+           }
+       }
+       return false;
+    }
 
 }
