@@ -4,5 +4,5 @@ public interface IWheel {
     int getRadius();
     Seasonality getSeasonality();
     String getId();
-    void setSeasonality(Seasonality seasonality);
+    void setSeasonality(Seasonality seasonality, int radius);
 }

@@ -5,6 +5,7 @@ import garage.cars.api.ICar;
 import garage.cars.api.LicenseCategory;
 import garage.parts.engine.api.FuelType;
 import garage.parts.key.api.IKey;
+import garage.parts.wheel.api.Seasonality;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,12 @@ public class Driver implements IDriver {
     public void closeCar(IKey key) {
         if(!this.getCar().getLock().isLock()) {
             System.out.println("Водитель не может закрыть ключом уже закрытую машину!!");
-        } else {
+        } else if(this.getCar().getEngine().isRunning())
+        {
+            System.out.println("Остановите машину, а потом закрывайте");
+        }
+        else
+        {
             this.getCar().close(key);
         }
     }
@@ -137,5 +143,10 @@ public class Driver implements IDriver {
     @Override
     public void setFuelToTheCar(int newFuelCount, FuelType fuelType) {
         this.getCar().setFuel(newFuelCount, fuelType);
+    }
+
+    @Override
+    public void changeWheel(Seasonality s, int radius) {
+        this.getCar().changeWheel(s, radius);
     }
 }

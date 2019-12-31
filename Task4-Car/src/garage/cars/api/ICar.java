@@ -6,6 +6,7 @@ import garage.parts.key.api.IKey;
 import garage.parts.engine.api.IEngine;
 import garage.parts.lock.api.ILock;
 import garage.parts.wheel.api.IWheel;
+import garage.parts.wheel.api.Seasonality;
 
 public interface ICar {
     String getModel();
@@ -22,7 +23,7 @@ public interface ICar {
     void stop();
     IFuelTank getFuelTank();
     void setFuel(int newFuel, FuelType fuelType);
-    void changeWheel();
+    void changeWheel(Seasonality s, int radius);
     void driverSeatTake();
     void driverSeatLeave();
     void passengerSeatTake(int countOfPassenger);

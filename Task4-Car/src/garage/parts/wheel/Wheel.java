@@ -31,7 +31,15 @@ public class Wheel implements IWheel {
     }
 
     @Override
-    public void setSeasonality(Seasonality seasonality) {
-        this.seasonality = seasonality;
+    public void setSeasonality(Seasonality seasonality, int radius) {
+        if (this.radius == radius)
+        {
+            this.seasonality = seasonality;
+            System.out.println("Поменяли шины");
+        }
+        else
+        {
+            System.out.println("Шины не подходят по размеру");
+        }
     }
 }

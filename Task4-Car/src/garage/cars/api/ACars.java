@@ -7,6 +7,7 @@ import garage.parts.key.api.IKey;
 import garage.parts.engine.api.IEngine;
 import garage.parts.lock.api.ILock;
 import garage.parts.wheel.api.IWheel;
+import garage.parts.wheel.api.Seasonality;
 
 public abstract class ACars implements ICar {
     private final int numberOfSeatsFinal;
@@ -132,8 +133,8 @@ public abstract class ACars implements ICar {
     }
 
     @Override
-    public void changeWheel() {
-        System.out.println("Меняем шины");
+    public void changeWheel(Seasonality s, int radius) {
+        this.getWheel().setSeasonality(s, radius);
     }
 
     @Override

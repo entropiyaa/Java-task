@@ -4,6 +4,7 @@ import garage.cars.api.ICar;
 import garage.cars.api.LicenseCategory;
 import garage.parts.engine.api.FuelType;
 import garage.parts.key.api.IKey;
+import garage.parts.wheel.api.Seasonality;
 
 import java.util.ArrayList;
 
@@ -21,4 +22,5 @@ public interface IDriver {
     void takePassenger(int countOfPassenger);
     void removePassenger(int countOfPassenger);
     void setFuelToTheCar(int newFuel, FuelType fuelType);
+    void changeWheel(Seasonality s, int radius);
 }
