@@ -40,7 +40,7 @@ public class Main {
         countries.sort(myComparator);
         System.out.println();
 
-        // элементы ArrayList до сортировки через компаратор
+        // элементы ArrayList после сортировки через компаратор
         for(Country c : countries)
         {
             System.out.println(c);
