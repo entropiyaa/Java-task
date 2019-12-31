@@ -1,5 +1,6 @@
 package garage.cars.api;
 
+import garage.parts.engine.api.FuelType;
 import garage.parts.key.api.IKey;
 import garage.parts.engine.api.IEngine;
 import garage.parts.lock.api.ILock;
@@ -19,9 +20,11 @@ public interface ICar {
     void start();
     void stop();
     int getFuel();
-    void setFuel(int newFuel);
+    void setFuel(int newFuel, FuelType fuelType);
     void useFuel(int usefulFuel);
     void changeWheel();
-    void driverSeat();
-    void passengerSeat(int countOfPassenger);
+    void driverSeatTake();
+    void driverSeatLeave();
+    void passengerSeatTake(int countOfPassenger);
+    void passengerSeatLeave(int countOfPassenger);
 }

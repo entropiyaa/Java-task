@@ -11,18 +11,6 @@ public class Key implements IKey {
         this.key = key;
     }
 
-/*    @Override
-    public void useKey() {
-        if(key)
-        {
-            System.out.println("Ключ подошёл!!");
-        }
-        else
-        {
-            System.out.println("Ключ не подходит");
-        }
-    }*/
-
     @Override
     public String getKey()
     {

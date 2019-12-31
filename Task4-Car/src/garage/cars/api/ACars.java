@@ -1,11 +1,13 @@
 package garage.cars.api;
 
+import garage.parts.engine.api.FuelType;
 import garage.parts.key.api.IKey;
 import garage.parts.engine.api.IEngine;
 import garage.parts.lock.api.ILock;
 import garage.parts.wheel.api.IWheel;
 
 public abstract class ACars implements ICar {
+    private final int numberOfSeatsFinal;
     private int numberOfSeats;
     private LicenseCategory licenseCategory;
     private IEngine engine;
@@ -14,16 +16,17 @@ public abstract class ACars implements ICar {
     private ILock lock;
     private int fuel;
 
-    public  ACars(String model, int numberOfSeats, LicenseCategory licenseCategory, IEngine engine, IWheel wheel,
+    public  ACars(String model, int numberOfSeatsFinal, LicenseCategory licenseCategory, IEngine engine, IWheel wheel,
                   ILock lock, int fuel)
     {
         this.model = model;
-        this.numberOfSeats = numberOfSeats;
+        this.numberOfSeatsFinal = numberOfSeatsFinal;
         this.licenseCategory = licenseCategory;
         this.engine = engine;
         this.wheel = wheel;
         this.lock = lock;
         this.fuel = fuel;
+        this.numberOfSeats = numberOfSeatsFinal;
     }
 
     @Override
@@ -76,6 +79,7 @@ public abstract class ACars implements ICar {
         if(this.getLock().checkKey(key))
         {
             this.getLock().openLock();
+            this.driverSeatTake();
         }
         else
         {
@@ -88,6 +92,7 @@ public abstract class ACars implements ICar {
         if(this.getLock().checkKey(key))
         {
             this.getLock().closeLock();
+            this.driverSeatLeave();
         }
         else
         {
@@ -113,8 +118,15 @@ public abstract class ACars implements ICar {
     }
 
     @Override
-    public void setFuel(int newFuel) {
-        fuel += newFuel;
+    public void setFuel(int newFuel, FuelType fuelType) {
+        if (this.getEngine().getFuelType() == fuelType)
+        {
+            fuel += newFuel;
+        }
+        else
+        {
+            System.out.println("Вы заливаете не тот тип топлива");
+        }
     }
 
     @Override
@@ -128,13 +140,19 @@ public abstract class ACars implements ICar {
     }
 
     @Override
-    public void driverSeat() {
+    public void driverSeatTake() {
         numberOfSeats -= 1;
         System.out.println("Водитель сел в машину");
     }
 
     @Override
-    public void passengerSeat(int countOfPassenger) {
+    public void driverSeatLeave() {
+        numberOfSeats += 1;
+        System.out.println("Водитель вышел из машины");
+    }
+
+    @Override
+    public void passengerSeatTake(int countOfPassenger) {
         if(numberOfSeats >= countOfPassenger)
         {
             numberOfSeats -= countOfPassenger;
@@ -143,6 +161,19 @@ public abstract class ACars implements ICar {
         else
         {
             System.out.println("Хватит место только на " +  numberOfSeats + " пассажира(ов)");
+        }
+    }
+
+    @Override
+    public void passengerSeatLeave(int countOfPassenger) {
+        if(numberOfSeatsFinal - numberOfSeats <= countOfPassenger)
+        {
+            System.out.println("Вы хотите высадить больше пассажиров, чем там есть");
+        }
+        else
+        {
+            numberOfSeats += countOfPassenger;
+            System.out.println("Высаживаем " + countOfPassenger + " пассажира(ов)");
         }
     }
 }

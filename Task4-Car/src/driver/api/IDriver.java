@@ -2,6 +2,7 @@ package driver.api;
 
 import garage.cars.api.ICar;
 import garage.cars.api.LicenseCategory;
+import garage.parts.engine.api.FuelType;
 import garage.parts.key.api.IKey;
 
 import java.util.ArrayList;
@@ -18,5 +19,6 @@ public interface IDriver {
     void stopCar();
     void driveCar();
     void takePassenger(int countOfPassenger);
-    void getInACar();
+    void removePassenger(int countOfPassenger);
+    void setFuelToTheCar(int newFuel, FuelType fuelType);
 }

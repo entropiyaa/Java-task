@@ -15,11 +15,13 @@ public class Lock implements ILock {
 
     @Override
     public void openLock() {
+        System.out.println("Водитель открыл машину");
         lockCondition = true;
     }
 
     @Override
     public void closeLock() {
+        System.out.println("Водитель закрыл машину");
         lockCondition = false;
     }
 

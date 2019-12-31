@@ -15,23 +15,27 @@ public class Main {
 
         Mercedes mercedes1 = new Mercedes("GL666", new MercedesEngine("A60", 2, FuelType.DIESEL),
                                           new Wheel(60, Seasonality.AllSeason, "K7"), new Lock("123"), 30);
-        System.out.println(mercedes1.getEngine().getCapacity());
 
-        Driver driver1 = new Driver(3, new Key("1123"), new ArrayList<LicenseCategory>(), mercedes1);
-        System.out.println(driver1.getCar().getLock().isLock());
-        driver1.setLicenseCategory(LicenseCategory.A);
+        Driver driver1 = new Driver(3, new Key("123"), new ArrayList<LicenseCategory>(), mercedes1);
         driver1.setLicenseCategory(LicenseCategory.B);
 
+        ArrayList<LicenseCategory> l = new ArrayList<>();
+        l.add(LicenseCategory.B);
+
+        Driver driver2 = new Driver(3, new Key("123"), l, mercedes1);
+
         driver1.openCar(driver1.getKey());
-        System.out.println(driver1.getCar().getLock().isLock());
+       // driver1.closeCar(driver2.getKey());
         driver1.startCar();
+       // driver1.stopCar();
         for(int i = 0; i < 10; i++)
         {
             driver1.driveCar();
         }
+        driver1.setFuelToTheCar(10);
+        driver1.driveCar();
         driver1.takePassenger(2);
+        driver1.removePassenger(2);
 
-       boolean a = driver1.checkLicence(driver1.getCar().getLicenseCategory());
-       System.out.println(a);
     }
 }

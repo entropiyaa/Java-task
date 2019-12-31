@@ -3,6 +3,7 @@ package driver;
 import driver.api.IDriver;
 import garage.cars.api.ICar;
 import garage.cars.api.LicenseCategory;
+import garage.parts.engine.api.FuelType;
 import garage.parts.key.api.IKey;
 
 import java.util.ArrayList;
@@ -53,7 +54,6 @@ public class Driver implements IDriver {
             System.out.println("Водитель не может открыть ключом уже открытую машину!!");
         } else {
             this.getCar().open(key);
-            this.getInACar();
         }
     }
 
@@ -114,15 +114,15 @@ public class Driver implements IDriver {
 
     @Override
     public void takePassenger(int countOfPassenger) {
-        this.getCar().passengerSeat(countOfPassenger);
+        this.getCar().passengerSeatTake(countOfPassenger);
     }
 
     @Override
-    public void getInACar() {
-        this.getCar().driverSeat();
+    public void removePassenger(int countOfPassenger) {
+        this.getCar().passengerSeatLeave(countOfPassenger);
     }
 
-    public boolean checkLicence(LicenseCategory licenseCategory)
+    private boolean checkLicence(LicenseCategory licenseCategory)
     {
        for(LicenseCategory l: this.driverLicense)
        {
@@ -134,4 +134,9 @@ public class Driver implements IDriver {
        return false;
     }
 
+    @Override
+    public void setFuelToTheCar(int newFuel, FuelType fuelType) {
+        this.getCar().setFuel(newFuel, fuelType);
+        System.out.println("Заправили машину");
+    }
 }
