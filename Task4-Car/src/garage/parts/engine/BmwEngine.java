@@ -6,8 +6,8 @@ import garage.parts.engine.api.IChangebleFuelType;
 
 public class BmwEngine extends AEngine implements IChangebleFuelType {
 
-    public BmwEngine(String id, int capacity, FuelType fuelType) {
-        super(id, capacity, fuelType);
+    public BmwEngine(String id, FuelType fuelType) {
+        super(id, fuelType);
     }
 
     @Override

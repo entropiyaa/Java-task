@@ -4,7 +4,7 @@ import garage.parts.key.api.IKey;
 
 public class Key implements IKey {
 
-    private String key;
+    private final String key;
 
     public Key(String key)
     {

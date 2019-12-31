@@ -1,6 +1,8 @@
 package garage.cars.api;
 
 import garage.parts.engine.api.FuelType;
+import garage.parts.fuelTank.FuelTank;
+import garage.parts.fuelTank.api.IFuelTank;
 import garage.parts.key.api.IKey;
 import garage.parts.engine.api.IEngine;
 import garage.parts.lock.api.ILock;
@@ -14,10 +16,10 @@ public abstract class ACars implements ICar {
     private IWheel wheel;
     private String model;
     private ILock lock;
-    private int fuel;
+    private IFuelTank fuelTank;
 
     public  ACars(String model, int numberOfSeatsFinal, LicenseCategory licenseCategory, IEngine engine, IWheel wheel,
-                  ILock lock, int fuel)
+                  ILock lock, IFuelTank fuelTank)
     {
         this.model = model;
         this.numberOfSeatsFinal = numberOfSeatsFinal;
@@ -25,7 +27,7 @@ public abstract class ACars implements ICar {
         this.engine = engine;
         this.wheel = wheel;
         this.lock = lock;
-        this.fuel = fuel;
+        this.fuelTank = fuelTank;
         this.numberOfSeats = numberOfSeatsFinal;
     }
 
@@ -61,12 +63,17 @@ public abstract class ACars implements ICar {
         return lock;
     }
 
+    @Override
+    public IFuelTank getFuelTank() {
+        return fuelTank;
+    }
+
     @Override // используем топливо
     public void drive() {
-        if(this.getFuel() > 0)  // если у нас есть топливо
+        if(this.getFuelTank().getFuelCount() > 0)  // если у нас есть топливо
         {
             System.out.println("Машина едет");
-            this.useFuel(this.getEngine().running());
+            this.getFuelTank().useFuel(this.getEngine().running());
         }
         else
         {
@@ -113,25 +120,15 @@ public abstract class ACars implements ICar {
     }
 
     @Override
-    public int getFuel() {
-        return fuel;
-    }
-
-    @Override
-    public void setFuel(int newFuel, FuelType fuelType) {
-        if (this.getEngine().getFuelType() == fuelType)
+    public void setFuel(int newFuelCount, FuelType fuelType) {
+        if (this.getFuelTank().getFuelType() == fuelType)
         {
-            fuel += newFuel;
+            this.getFuelTank().setFuel(newFuelCount, fuelType);
         }
         else
         {
             System.out.println("Вы заливаете не тот тип топлива");
         }
-    }
-
-    @Override
-    public void useFuel(int usefulFuel) {
-        fuel -= usefulFuel;
     }
 
     @Override

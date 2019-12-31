@@ -5,7 +5,7 @@ import garage.parts.lock.api.ILock;
 
 public class Lock implements ILock {
 
-    private String lock;
+    private final String lock;
     private boolean lockCondition;
 
     public Lock(String lock)

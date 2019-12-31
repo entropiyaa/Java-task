@@ -5,14 +5,12 @@ import java.util.Random;
 public abstract class AEngine implements IEngine {
 
     private final String id;
-    private final int capacity;
     protected FuelType fuelType;
     private boolean running;
 
-    public AEngine(String id, int capacity, FuelType fuelType)
+    public AEngine(String id, FuelType fuelType)
     {
         this.id = id;
-        this.capacity = capacity;
         this.fuelType = fuelType;
     }
 
@@ -24,11 +22,6 @@ public abstract class AEngine implements IEngine {
     @Override
     public FuelType getFuelType() {
         return fuelType;
-    }
-
-    @Override
-    public int getCapacity() {
-        return capacity;
     }
 
     @Override

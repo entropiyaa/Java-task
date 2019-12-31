@@ -6,8 +6,8 @@ import garage.parts.engine.api.IChangebleFuelType;
 
 public class MercedesEngine extends AEngine implements IChangebleFuelType {
 
-    public MercedesEngine(String id, int capacity, FuelType fuelType) {
-        super(id, capacity, fuelType);
+    public MercedesEngine(String id, FuelType fuelType) {
+        super(id, fuelType);
     }
 
     @Override

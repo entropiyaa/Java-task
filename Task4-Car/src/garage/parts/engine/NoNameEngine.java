@@ -5,7 +5,7 @@ import garage.parts.engine.api.FuelType;
 
 public class NoNameEngine extends AEngine {
 
-    public NoNameEngine(String id, int capacity, FuelType fuelType) {
-        super(id, capacity, fuelType);
+    public NoNameEngine(String id, FuelType fuelType) {
+        super(id, fuelType);
     }
 }

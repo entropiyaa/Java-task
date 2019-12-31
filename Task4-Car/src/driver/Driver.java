@@ -135,8 +135,7 @@ public class Driver implements IDriver {
     }
 
     @Override
-    public void setFuelToTheCar(int newFuel, FuelType fuelType) {
-        this.getCar().setFuel(newFuel, fuelType);
-        System.out.println("Заправили машину");
+    public void setFuelToTheCar(int newFuelCount, FuelType fuelType) {
+        this.getCar().setFuel(newFuelCount, fuelType);
     }
 }
