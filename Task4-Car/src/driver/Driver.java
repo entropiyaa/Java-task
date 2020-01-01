@@ -130,14 +130,7 @@ public class Driver implements IDriver {
 
     private boolean checkLicence(LicenseCategory licenseCategory)
     {
-       for(LicenseCategory l: this.driverLicense)
-       {
-           if(l.equals(licenseCategory))
-           {
-               return true;
-           }
-       }
-       return false;
+       return driverLicense.contains(licenseCategory);
     }
 
     @Override
