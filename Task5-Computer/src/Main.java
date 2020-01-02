@@ -1,30 +1,44 @@
-import computer.Computer1;
-import computer.Computer2;
-import computerParts.systemUnit.CPU.CPU1;
-import computerParts.systemUnit.CPU.CPU2;
-import computerParts.systemUnit.CPU.CPU3;
+import computer.Computer;
+import computerParts.CPU.CPU;
+import computerParts.HDD.HDD;
+import computerParts.RAM.RAM;
+import computerParts.api.ISpareParts;
+import computerParts.api.Standard;
+import computerParts.motherboard.Motherboard;
+import computerParts.powerSupply.PowerSupply;
+import computerParts.videoAdapter.VideoAdapter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        CPU1 cpu1 = new CPU1();
-        CPU2 cpu2 = new CPU2();
-        CPU3 cpu3 = new CPU3();
+        CPU cpu = new CPU(Standard.STANDARD_1);
+        System.out.println("Стандарт cpu: " + cpu.getStandard());
 
+        HDD hdd = new HDD(Standard.STANDARD_2);
+        System.out.println("Стандарт hdd: " + hdd.getStandard());
 
-        Computer1 comp1 = new Computer1(cpu1);
-        System.out.println(comp1.getCompCPU());
-        System.out.println(cpu1.getStandard());
+        Motherboard motherboard = new Motherboard(Standard.STANDARD_3);
+        PowerSupply powerSupply = new PowerSupply(Standard.STANDARD_4);
+        RAM ram = new RAM(Standard.STANDARD_5);
+        VideoAdapter videoAdapter = new VideoAdapter(Standard.STANDARD_6);
 
-        Computer2 comp2 = new Computer2(cpu2);
-        System.out.println(comp2.getCompCPU());
-        System.out.println(cpu2.getStandard());
+        ArrayList<ISpareParts> arr = new ArrayList<>();
+        arr.add(hdd);
+        arr.add(cpu);
+        arr.add(motherboard);
+        arr.add(videoAdapter);
+        arr.add(ram);
+        arr.add(powerSupply);
 
-        comp1.start();
-        comp2.start();
+        Computer comp = new Computer(arr, Standard.STANDARD_1, Standard.STANDARD_2, Standard.STANDARD_3,
+                                     Standard.STANDARD_4, Standard.STANDARD_5, Standard.STANDARD_6);
+        System.out.println("У компьютера должно быть cpu: " + comp.getStandardCPU());
+        System.out.println("У компьютера должно быть hdd: " + comp.getStandardHDD());
+        System.out.println("У компьютера должно быть мп: " + comp.getStandardMotherboard());
+        comp.start();
 
     }
 }
