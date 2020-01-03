@@ -52,66 +52,75 @@ public class Computer implements IComputer {
 
     @Override
     public void start() {
-        for (ISpareParts arrayOfPart : arrayOfParts) {
-            if (arrayOfPart.getClass() == CPU.class)
+        for(ISpareParts arrayOfPart : arrayOfParts)
+        {
+            if(arrayOfPart.getDefect())
             {
-                if (standardCPU != arrayOfPart.getStandard())
+                if (arrayOfPart.getClass() == CPU.class)
                 {
-                    System.out.println("Не подходит стандарт CPU");
-                    break;
+                    if (standardCPU != arrayOfPart.getStandard())
+                    {
+                        System.out.println("Не подходит стандарт CPU");
+                        break;
+                    }
+                    else
+                        System.out.println("CPU подошёл");
                 }
-                else
-                    System.out.println("CPU подошёл");
+                else if (arrayOfPart.getClass() == HDD.class)
+                {
+                    if (standardHDD != arrayOfPart.getStandard())
+                    {
+                        System.out.println("Не подходит стандарт HDD");
+                        break;
+                    }
+                    else
+                        System.out.println("HDD подошёл");
+                }
+                else if(arrayOfPart.getClass() == Motherboard.class)
+                {
+                    if(standardMotherboard != arrayOfPart.getStandard())
+                    {
+                        System.out.println("Не подходит стандарт материнской платы");
+                        break;
+                    }
+                    else
+                        System.out.println("Материнская плата подошла");
+                }
+                else if(arrayOfPart.getClass() == PowerSupply.class)
+                {
+                    if(standardPowerSupply != arrayOfPart.getStandard())
+                    {
+                        System.out.println("Не подходит стандарт блока питания");
+                        break;
+                    }
+                    else
+                        System.out.println("Блок питания подошёл");
+                }
+                else if(arrayOfPart.getClass() == RAM.class)
+                {
+                    if(standardRAM != arrayOfPart.getStandard())
+                    {
+                        System.out.println("Не подходит стандарт RAM");
+                        break;
+                    }
+                    else
+                        System.out.println("RAM подошёл");
+                }
+                else if(arrayOfPart.getClass() == VideoAdapter.class)
+                {
+                    if(standardVideoAdapter != arrayOfPart.getStandard())
+                    {
+                        System.out.println("Не подходит стандарт видеоадаптера");
+                        break;
+                    }
+                    else
+                        System.out.println("Видеоадаптер подошёл");
+                }
             }
-            else if (arrayOfPart.getClass() == HDD.class)
+            else
             {
-                if (standardHDD != arrayOfPart.getStandard())
-                {
-                    System.out.println("Не подходит стандарт HDD");
-                    break;
-                }
-                else
-                    System.out.println("HDD подошёл");
-            }
-            else if(arrayOfPart.getClass() == Motherboard.class)
-            {
-                if(standardMotherboard != arrayOfPart.getStandard())
-                {
-                    System.out.println("Не подходит стандарт материнской платы");
-                    break;
-                }
-                else
-                    System.out.println("Материнская плата подошла");
-            }
-            else if(arrayOfPart.getClass() == PowerSupply.class)
-            {
-                if(standardPowerSupply != arrayOfPart.getStandard())
-                {
-                    System.out.println("Не подходит стандарт блока питания");
-                    break;
-                }
-                else
-                    System.out.println("Блок питания подошёл");
-            }
-            else if(arrayOfPart.getClass() == RAM.class)
-            {
-                if(standardRAM != arrayOfPart.getStandard())
-                {
-                    System.out.println("Не подходит стандарт RAM");
-                    break;
-                }
-                else
-                    System.out.println("RAM подошёл");
-            }
-            else if(arrayOfPart.getClass() == VideoAdapter.class)
-            {
-                if(standardVideoAdapter != arrayOfPart.getStandard())
-                {
-                    System.out.println("Не подходит стандарт видеоадаптера");
-                    break;
-                }
-                else
-                    System.out.println("Видеоадаптер подошёл");
+                System.out.println("Не может запуститься, есть бракованная деталь");
+                break;
             }
         }
     }

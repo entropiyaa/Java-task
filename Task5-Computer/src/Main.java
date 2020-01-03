@@ -38,6 +38,7 @@ public class Main {
         System.out.println("У компьютера должно быть cpu: " + comp.getStandardCPU());
         System.out.println("У компьютера должно быть hdd: " + comp.getStandardHDD());
         System.out.println("У компьютера должно быть мп: " + comp.getStandardMotherboard());
+        //ram.changeDefect();
         comp.start();
 
     }
