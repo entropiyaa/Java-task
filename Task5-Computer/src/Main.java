@@ -1,12 +1,8 @@
 import computer.Computer;
 import computerParts.CPU.CPU;
 import computerParts.HDD.HDD;
-import computerParts.RAM.RAM;
-import computerParts.api.ISpareParts;
-import computerParts.api.Standard;
+import computerParts.api.*;
 import computerParts.motherboard.Motherboard;
-import computerParts.powerSupply.PowerSupply;
-import computerParts.videoAdapter.VideoAdapter;
 
 import java.util.ArrayList;
 
@@ -14,32 +10,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CPU cpu = new CPU(Standard.STANDARD_1);
-        System.out.println("Стандарт cpu: " + cpu.getStandard());
+        // создаём массивы стандартов для запчастей
+        ArrayList<IStandard> arrCPU = new ArrayList<>();
+        arrCPU.add(StandardCPU.STANDARD_3);
+        arrCPU.add(StandardCPU.STANDARD_1);
 
-        HDD hdd = new HDD(Standard.STANDARD_2);
-        System.out.println("Стандарт hdd: " + hdd.getStandard());
+        ArrayList<IStandard> arrHDD = new ArrayList<>();
+        arrHDD.add(StandardHDD.STANDARD1);
+        arrHDD.add(StandardHDD.STANDARD4);
 
-        Motherboard motherboard = new Motherboard(Standard.STANDARD_3);
-        PowerSupply powerSupply = new PowerSupply(Standard.STANDARD_4);
-        RAM ram = new RAM(Standard.STANDARD_5);
-        VideoAdapter videoAdapter = new VideoAdapter(Standard.STANDARD_6);
+        ArrayList<IStandard> arrMotherboard = new ArrayList<>();
+        arrMotherboard.add(StandardMotherboard.ST2);
 
-        ArrayList<ISpareParts> arr = new ArrayList<>();
-        arr.add(hdd);
-        arr.add(cpu);
-        arr.add(motherboard);
-        arr.add(videoAdapter);
-        arr.add(ram);
-        arr.add(powerSupply);
+        // создаём запчасти, которые хранят массив с их стандартами
+        CPU cpu = new CPU(arrCPU);
+        HDD hdd = new HDD(arrHDD);
+        Motherboard motherboard = new Motherboard(arrMotherboard);
 
-        Computer comp = new Computer(arr, Standard.STANDARD_1, Standard.STANDARD_2, Standard.STANDARD_3,
-                                     Standard.STANDARD_4, Standard.STANDARD_5, Standard.STANDARD_6);
-        System.out.println("У компьютера должно быть cpu: " + comp.getStandardCPU());
-        System.out.println("У компьютера должно быть hdd: " + comp.getStandardHDD());
-        System.out.println("У компьютера должно быть мп: " + comp.getStandardMotherboard());
-        //ram.changeDefect();
+        // создаём массив запчастей
+        ArrayList<ISpareParts> arrParts = new ArrayList<>();
+        arrParts.add(cpu);
+        arrParts.add(hdd);
+        arrParts.add(motherboard);
+
+        // создаём массив со стандартами компьютера
+        ArrayList<IStandard> arrStandard = new ArrayList<>();
+        arrStandard.add(StandardCPU.STANDARD_1);
+        arrStandard.add(StandardCPU.STANDARD_2);
+        arrStandard.add(StandardCPU.STANDARD_7);
+        arrStandard.add(StandardHDD.STANDARD1);
+        arrStandard.add(StandardHDD.STANDARD4);
+        arrStandard.add(StandardMotherboard.ST2);
+        arrStandard.add(StandardMotherboard.ST4);
+
+        // создаём компьютер
+        Computer comp = new Computer(arrParts, arrStandard);
+
         comp.start();
-
     }
 }

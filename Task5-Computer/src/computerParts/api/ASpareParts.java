@@ -1,19 +1,26 @@
 package computerParts.api;
 
-public class ASpareParts implements ISpareParts {
+import java.util.ArrayList;
 
-    private Standard standard;
+public abstract class ASpareParts implements ISpareParts {
+
+    private ArrayList<IStandard> standard;
     private boolean defect;
 
-    public ASpareParts(Standard standard)
+    public ASpareParts(ArrayList<IStandard> standard)
     {
         this.standard = standard;
         defect = true;
     }
 
     @Override
-    public Standard getStandard() {
+    public ArrayList<IStandard> getStandard() {
         return standard;
+    }
+
+    @Override
+    public boolean getDefect() {
+        return defect;
     }
 
     @Override
@@ -22,7 +29,16 @@ public class ASpareParts implements ISpareParts {
     }
 
     @Override
-    public boolean getDefect() {
-        return defect;
+    public boolean test(ArrayList<IStandard> arrayOfStandard)
+    {
+        for (IStandard partStandard : standard) {
+            for (IStandard compStandard : arrayOfStandard) {
+                if (partStandard == compStandard) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+
 }

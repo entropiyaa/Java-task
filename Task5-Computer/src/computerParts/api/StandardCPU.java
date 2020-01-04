@@ -1,6 +1,9 @@
 package computerParts.api;
 
-public enum Standard {
+import java.util.ArrayList;
+
+public enum StandardCPU implements IStandard {
+
     STANDARD_1,
     STANDARD_2,
     STANDARD_3,
@@ -11,4 +14,10 @@ public enum Standard {
     STANDARD_8,
     STANDARD_9,
     STANDARD_10;
+
+    @Override
+    public StandardCPU[] getStandard() {
+        return StandardCPU.values();
+    }
+
 }
