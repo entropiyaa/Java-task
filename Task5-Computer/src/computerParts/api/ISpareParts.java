@@ -7,5 +7,7 @@ public interface ISpareParts {
     boolean test(ArrayList<IStandard> arrayOfStandard);
     boolean getDefect();
     void changeDefect();
-    boolean checkStandard(ArrayList<IStandard> standard);
+    String getPartName();
+    void setPartName(String partName);
+    boolean check(ArrayList<IStandard> standard);
 }

@@ -9,10 +9,11 @@ public class RAM extends ASpareParts {
 
     public RAM(ArrayList<IStandard> standard) {
         super(standard);
+        setPartName("RAM");
+        if(!check(standard))
+        {
+            throw new IllegalArgumentException("В RAM находится недопустимый стандарт!");
+        }
     }
 
-    @Override
-    public boolean checkStandard(ArrayList<IStandard> standard) {
-        return false;
-    }
 }

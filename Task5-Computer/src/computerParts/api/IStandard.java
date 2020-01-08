@@ -1,5 +1,5 @@
 package computerParts.api;
 
-public interface IStandard<T> {
-    T[] getStandard();
+public interface IStandard {
+    String getStandardName();
 }

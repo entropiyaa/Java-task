@@ -8,7 +8,7 @@ public enum StandardHDD implements IStandard {
     STANDARD4;
 
     @Override
-    public StandardHDD[] getStandard() {
-        return StandardHDD.values();
+    public String getStandardName() {
+        return "HDD";
     }
 }

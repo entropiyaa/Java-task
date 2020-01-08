@@ -9,10 +9,10 @@ public class PowerSupply extends ASpareParts {
 
     public PowerSupply(ArrayList<IStandard> standard) {
         super(standard);
-    }
-
-    @Override
-    public boolean checkStandard(ArrayList<IStandard> standard) {
-        return false;
+        setPartName("PowerSupply");
+        if(!check(standard))
+        {
+            throw new IllegalArgumentException("В PowerSupply находится недопустимый стандарт!");
+        }
     }
 }

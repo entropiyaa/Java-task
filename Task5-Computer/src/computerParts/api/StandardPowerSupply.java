@@ -1,6 +1,6 @@
 package computerParts.api;
 
-public enum StandardCPU implements IStandard {
+public enum StandardPowerSupply implements IStandard {
 
     STANDARD_1,
     STANDARD_2,
@@ -16,6 +16,6 @@ public enum StandardCPU implements IStandard {
     @Override
     public String getStandardName()
     {
-        return "CPU";
+        return "PowerSupply";
     }
 }

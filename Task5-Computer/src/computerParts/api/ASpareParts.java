@@ -6,11 +6,24 @@ public abstract class ASpareParts implements ISpareParts {
 
     private ArrayList<IStandard> standard;
     private boolean defect;
+    private String partName;
 
     public ASpareParts(ArrayList<IStandard> standard)
     {
         this.standard = standard;
         defect = true;
+    }
+
+    @Override
+    public String getPartName()
+    {
+        return partName;
+    }
+
+    @Override
+    public void setPartName(String partName)
+    {
+        this.partName = partName;
     }
 
     @Override
@@ -41,4 +54,15 @@ public abstract class ASpareParts implements ISpareParts {
         return false;
     }
 
+    @Override
+    public boolean check(ArrayList<IStandard> standard)
+    {
+        for (IStandard iStandard : standard)
+        {
+            if (!(iStandard.getStandardName().equals(partName))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

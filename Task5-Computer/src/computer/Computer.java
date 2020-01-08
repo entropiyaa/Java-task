@@ -1,11 +1,8 @@
 package computer;
 
 import computer.api.IComputer;
-import computerParts.CPU.CPU;
-import computerParts.HDD.HDD;
 import computerParts.api.ISpareParts;
 import computerParts.api.IStandard;
-import computerParts.motherboard.Motherboard;
 
 import java.util.ArrayList;
 
@@ -24,54 +21,21 @@ public class Computer implements IComputer {
     public void start() {
         for(ISpareParts part : arrayOfParts)
         {
-            if (part.getClass() == CPU.class)
+            if(part.test(arrayOfStandard))
             {
-                if(part.checkStandard(part.getStandard()))
-                {
-                    if(part.test(arrayOfStandard))
-                    {
-                        System.out.println("CPU подошёл");
-                    }
-                    else
-                    {
-                        System.out.println("Стандарт CPU не подходит");
-                    }
-                }
+                System.out.println(part.getPartName() + " подошёл");
             }
-            else if (part.getClass() == HDD.class)
+            else
             {
-                if(part.checkStandard(part.getStandard()))
-                {
-                    if(part.test(arrayOfStandard))
-                    {
-                        System.out.println("HDD подошёл");
-                    }
-                    else
-                    {
-                        System.out.println("Стандарт HDD не подходит");
-                    }
-                }
-            }
-            else if(part.getClass() == Motherboard.class)
-            {
-                if(part.checkStandard(part.getStandard()))
-                {
-                    if(part.test(arrayOfStandard))
-                    {
-                        System.out.println("Motherboard подошёл");
-                    }
-                    else
-                    {
-                        System.out.println("Стандарт Motherboard не подходит");
-                    }
-                }
+                System.out.println("Стандарт " + part.getPartName() + " не подходит");
+                break;
             }
         }
         for(ISpareParts part : arrayOfParts)
         {
             if(!part.getDefect())
             {
-                System.out.println("Есть бракованная деталь!!");
+                System.out.println(part.getPartName() + " бракованная деталь!!");
             }
         }
     }

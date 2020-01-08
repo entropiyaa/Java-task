@@ -9,10 +9,10 @@ public class VideoAdapter extends ASpareParts {
 
     public VideoAdapter(ArrayList<IStandard> standard) {
         super(standard);
-    }
-
-    @Override
-    public boolean checkStandard(ArrayList<IStandard> standard) {
-        return false;
+        setPartName("VideoAdapter");
+        if(!check(standard))
+        {
+            throw new IllegalArgumentException("В VideoAdapter находится недопустимый стандарт!");
+        }
     }
 }

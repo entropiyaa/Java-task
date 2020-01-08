@@ -8,7 +8,7 @@ public enum StandardMotherboard implements IStandard {
     ST4;
 
     @Override
-    public StandardMotherboard[] getStandard() {
-        return StandardMotherboard.values();
+    public String getStandardName() {
+        return "Motherboard";
     }
 }
