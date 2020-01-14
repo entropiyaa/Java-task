@@ -11,9 +11,22 @@ public class Computer implements IComputer {
     private ArrayList<ISpareParts> arrayOfParts;
     private ArrayList<IStandard> arrayOfStandard;
 
+    public Computer() {}
+
     public Computer(ArrayList<ISpareParts> arrayOfParts, ArrayList<IStandard> arrayOfStandard)
     {
         this.arrayOfParts = arrayOfParts;
+        this.arrayOfStandard = arrayOfStandard;
+    }
+
+
+    @Override
+    public void setArrayOfParts(ArrayList<ISpareParts> arrayOfParts) {
+        this.arrayOfParts = arrayOfParts;
+    }
+
+    @Override
+    public void setArrayOfStandard(ArrayList<IStandard> arrayOfStandard) {
         this.arrayOfStandard = arrayOfStandard;
     }
 
