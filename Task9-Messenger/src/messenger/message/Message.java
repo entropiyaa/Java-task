@@ -4,7 +4,7 @@ import messenger.user.User;
 
 import java.util.Date;
 
-public class Message<T> {
+public class Message<T> implements IMessage {
 
     private final User user;
     private Enum type;
@@ -19,32 +19,24 @@ public class Message<T> {
         this.date = date;
     }
 
+    @Override
     public User getUser() {
         return user;
     }
 
+    @Override
     public Enum getType() {
         return type;
     }
 
-    public void setType(Enum type) {
-        this.type = type;
-    }
-
+    @Override
     public T getData() {
         return data;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
-
+    @Override
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     @Override

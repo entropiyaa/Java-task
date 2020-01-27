@@ -13,27 +13,30 @@ public class User {
         this.password = password;
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void changeName(String name)
+    {
         this.name = name;
+        // TODO добавить проверку
     }
 
-    public String getPassword() {
+    public String getPassword()
+    {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void changePassword(String password)
+    {
         this.password = password;
+        // TODO добавить проверку
     }
 }

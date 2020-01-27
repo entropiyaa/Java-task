@@ -1,18 +1,15 @@
 package messenger.chat;
 
-import messenger.message.Message;
+import messenger.message.IMessage;
 import messenger.user.User;
 
 import java.util.List;
 import java.util.Set;
 
 public class TextChat extends Chat {
-    @Override
-    public void save(ISaverChat sever) {
-        super.save(sever);
-    }
 
-    public TextChat(Set<User> users, List<Message> messages) {
+    public TextChat(Set<User> users, List<IMessage> messages)
+    {
         super(users, messages);
     }
 }
