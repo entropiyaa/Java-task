@@ -10,10 +10,15 @@ import java.util.Random;
 
 public class Registration {
 
-    private Map<String, User> baseOfUsers = new HashMap<>();
+    private Map<String, User> UsersBase = new HashMap<>();
+
+    public Map<String, User> getUsersBase()
+    {
+        return UsersBase;
+    }
 
     public User registration(String login, String password) throws ValidationException {
-        if(!baseOfUsers.containsKey(login))
+        if(!UsersBase.containsKey(login))
         {
             Validation v = new Validation();
             if(v.validation(login, password))
@@ -21,7 +26,7 @@ public class Registration {
                 Random random = new Random();
                 long id = random.nextLong();
                 User user = new User(id, login, password);
-                baseOfUsers.put(login, user);
+                UsersBase.put(login, user);
                 return user;
             } else
             {
