@@ -3,7 +3,9 @@ import messenger.message.IMessage;
 import messenger.message.Message;
 import messenger.message.MessageType;
 import messenger.registration.Registration;
+import messenger.saver.BinarySaver;
 import messenger.saver.ConsoleSaver;
+import messenger.saver.StandardSaver;
 import messenger.saver.TextFileSaver;
 import messenger.user.User;
 import messenger.validation.ValidationException;
@@ -33,5 +35,7 @@ public class Main {
 
         textChat.save(new ConsoleSaver());
         textChat.save(new TextFileSaver());
+        textChat.save(new StandardSaver());
+        textChat.save(new BinarySaver());
     }
 }
