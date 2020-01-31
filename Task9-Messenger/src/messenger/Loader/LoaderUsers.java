@@ -36,7 +36,7 @@ public class LoaderUsers extends ALoader {
             while(fis.available() > 0)
             {
                 User newUser = (User)ois.readObject();
-                usersBase.put(newUser.getName(), newUser);
+                usersBase.put(newUser.getLogin(), newUser);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

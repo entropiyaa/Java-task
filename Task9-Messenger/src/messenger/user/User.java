@@ -1,5 +1,9 @@
 package messenger.user;
 
+import messenger.registration.Registration;
+import messenger.validation.Validation;
+import messenger.validation.ValidationException;
+
 import java.io.*;
 import java.util.Objects;
 
@@ -7,14 +11,14 @@ public class User implements Serializable {
 
     static final long SerialVersionUID = 1L;
 
-    private long id;
-    private String name;
+    private final long id;
+    private String login;
     private String password;
 
-    public User(long id, String name, String password)
+    public User(long id, String login, String password)
     {
         this.id = id;
-        this.name = name;
+        this.login = login;
         this.password = password;
     }
 
@@ -23,15 +27,31 @@ public class User implements Serializable {
         return id;
     }
 
-    public String getName()
+    public String getLogin()
     {
-        return name;
+        return login;
     }
 
-    public void changeName(String name)
+    public void changeLogin(String login, Registration registration)
     {
-        this.name = name;
-        // TODO добавить проверку
+        if(registration.getUsersBase().containsKey(login))
+        {
+            System.out.println("Логин " + login + " уже существует");
+            System.out.println("Новый логин у " + this.getLogin() + " не установлен");
+        } else {
+            try {
+                if(new Validation().validationLogin(login))
+                {
+                    System.out.print("Логин у пользователя " + this.getLogin());
+                    this.login = login;
+                    System.out.println(" успешно изменён на " + this.getLogin());
+                }
+            } catch(ValidationException e)
+            {
+                e.printStackTrace();
+                System.out.println("Новый логин у " + this.getLogin() + " не установлен");
+            }
+        }
     }
 
     public String getPassword()
@@ -39,10 +59,18 @@ public class User implements Serializable {
         return password;
     }
 
-    public void changePassword(String password)
-    {
-        this.password = password;
-        // TODO добавить проверку
+    public void changePassword(String password) {
+        try {
+            if(new Validation().validationPassword(password))
+            {
+                this.password = password;
+                System.out.println("Новый пароль у " + this.getLogin() +" установлен");
+            }
+        } catch(ValidationException e)
+        {
+            e.printStackTrace();
+            System.out.println("Новый пароль у " + this.getLogin() + " не установлен");
+        }
     }
 
     @Override
@@ -62,7 +90,7 @@ public class User implements Serializable {
     public String toString() {
         return "User {" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

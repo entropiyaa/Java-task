@@ -39,6 +39,10 @@ public class Main {
         textChat.save(new StandardSaver());
         textChat.save(new BinarySaver());
 
+        user1.changePassword("kfhvcx,x/");
+        user1.changeLogin("mashaB@mail.ru", registration);
+        System.out.println(registration.getUsersBase().values());
+
         LoaderUsers loader = new LoaderUsers();
         loader.save(registration.getUsersBase());
 
