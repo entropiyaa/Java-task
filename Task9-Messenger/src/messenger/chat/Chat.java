@@ -32,22 +32,36 @@ public abstract class Chat implements IChat {
     @Override
     public void addMessage(IMessage message)
     {
-        List<IMessage> arrayList = new ArrayList<>();
-        arrayList.add(message);
-        addMessage(arrayList);
+        if(users.contains(message.getUser()))
+        {
+            messages.add(message);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
     public void addMessage(IMessage[] message)
     {
-        List<IMessage> arrayList = new ArrayList<>(Arrays.asList(message));
-        addMessage(arrayList);
+        if(message != null)
+        {
+            for(IMessage mes : message)
+            {
+                addMessage(mes);
+            }
+        }
     }
 
     @Override
     public void addMessage(List<IMessage> message)
     {
-        messages.addAll(message);
+        if(message != null)
+        {
+            for(IMessage mes : message)
+            {
+                addMessage(mes);
+            }
+        }
     }
 
     @Override
