@@ -1,8 +1,11 @@
 package messenger.user;
 
+import java.io.*;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
+
+    static final long SerialVersionUID = 1L;
 
     private long id;
     private String name;
@@ -53,5 +56,28 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "User {" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException
+    {
+        out.defaultWriteObject();
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException
+    {
+        in.defaultReadObject();
+    }
+
+    private void readObjectNoData() throws InvalidObjectException {
+        throw new InvalidObjectException("Stream data required");
     }
 }

@@ -1,3 +1,4 @@
+import messenger.Loader.LoaderUsers;
 import messenger.chat.TextChat;
 import messenger.message.IMessage;
 import messenger.message.Message;
@@ -10,7 +11,7 @@ import messenger.saver.TextFileSaver;
 import messenger.user.User;
 import messenger.validation.ValidationException;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -37,5 +38,11 @@ public class Main {
         textChat.save(new TextFileSaver());
         textChat.save(new StandardSaver());
         textChat.save(new BinarySaver());
+
+        LoaderUsers loader = new LoaderUsers();
+        loader.save(registration.getUsersBase());
+
+        Map<String, User> newUsersBase = loader.load();
+        loader.printUsers(newUsersBase);
     }
 }
